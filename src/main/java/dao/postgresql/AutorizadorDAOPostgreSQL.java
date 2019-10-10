@@ -9,12 +9,52 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+/**
+* Classe responsável em realizar operações no banco de dados
+ * Em todas as operações é aberto e fechado a conexão.
+ *
+ * @author Sandro Ireno Martins Junior
+* */
 
 public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
 
     @Override
     public boolean salvar(Autorizador autorizador) {
-        return false;
+        boolean resultado = false;
+        ConexaoPostgreSQL minhaConexaoPostgreSQL = new ConexaoPostgreSQL(BaseDados.POSTGRESQL);
+        minhaConexaoPostgreSQL.conectar();
+        Connection conn = minhaConexaoPostgreSQL.getConnection();
+        PreparedStatement pstmt = null;
+
+        try{
+            String sql = "INSERT INTO autorizador (nr_procedimento, idade, sexo)" +
+                    "VALUES(?, ?, ?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, autorizador.getNr_procedimento());
+            pstmt.setInt(2, autorizador.getIdade());
+            pstmt.setString(3, autorizador.getSexo());
+
+            pstmt.executeUpdate();
+            resultado = true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            if (pstmt != null){
+                try{
+                    pstmt.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }if(conn != null) {
+                try{
+                    conn.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return resultado;
     }
 
     @Override
@@ -35,11 +75,12 @@ public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
         Connection conn = minhaConexaoPostgreSQL.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+
         try{
             String sql = "SELECT * FROM autorizador " +
                     "WHERE nr_procedimento = ?" +
                     "AND idade = ?" +
-                    "AND sexo = ?";
+                    "AND lower(sexo) = lower(?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, autorizador.getNr_procedimento());
             pstmt.setInt(2, autorizador.getIdade());
@@ -53,7 +94,7 @@ public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
         }catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if(pstmt != null){
+            if (pstmt != null){
                 try{
                     pstmt.close();
                 } catch (SQLException e) {
