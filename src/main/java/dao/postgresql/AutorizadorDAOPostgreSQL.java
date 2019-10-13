@@ -110,4 +110,45 @@ public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
         }
         return resultado;
     }
+
+    @Override
+    public boolean validarProcedimento(Autorizador autorizador) {
+        boolean resultado = false;
+        ConexaoPostgreSQL minhaConexaoPostgreSQL = new ConexaoPostgreSQL(BaseDados.POSTGRESQL);
+        minhaConexaoPostgreSQL.conectar();
+        Connection conn = minhaConexaoPostgreSQL.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try{
+            String sql = "SELECT * FROM autorizador " +
+                    "WHERE nr_procedimento = ?";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, autorizador.getNr_procedimento());
+            rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                resultado = true;
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (pstmt != null){
+                try{
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } if (conn!= null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return resultado;
+    }
 }

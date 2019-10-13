@@ -9,4 +9,5 @@ public interface AutorizadorDAO {
     public List<Autorizador> buscarTodos();
     public boolean desativar(int id_autorizador);
     public boolean validarRegra(Autorizador autorizador);
+    public boolean validarProcedimento(Autorizador autorizador);
 }
