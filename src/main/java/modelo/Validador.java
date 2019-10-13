@@ -2,6 +2,9 @@ package modelo;
 
 public class Validador {
 
+    public Validador(){
+
+    }
     public boolean validarSexo(String sexo){
         if (sexo.equalsIgnoreCase("m") || sexo.equalsIgnoreCase("f")){
             return true;

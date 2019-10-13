@@ -1,8 +1,6 @@
-package view;
-
 import dao.postgresql.*;
-import modelo.Autorizador;
-import modelo.Validador;
+
+import modelo.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

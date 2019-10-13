@@ -1,11 +1,17 @@
 package modelo;
 
 public class Autorizador {
+
     private int id_autorizador;
     private int nr_procedimento;
     private int idade;
     private String sexo;
     private boolean ativo;
+
+
+    public Autorizador() {
+
+    }
 
     public int getId_autorizador() {
         return id_autorizador;
