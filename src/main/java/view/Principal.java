@@ -1,3 +1,5 @@
+package view;
+
 import dao.postgresql.*;
 
 import modelo.*;
@@ -76,9 +78,9 @@ public class Principal {
                         resultado = dao.validarRegra(autorizador);
 
                         if (resultado == true) {
-                            System.out.println("\nSIM");
+                            System.out.println("\nPERMITIDO !!");
                         } else {
-                            System.out.println("\nNÃO");
+                            System.out.println("\nNEGADO !!");
                         }
                     } catch (InputMismatchException t) {
                         System.out.println("Valor digitado inválido.");

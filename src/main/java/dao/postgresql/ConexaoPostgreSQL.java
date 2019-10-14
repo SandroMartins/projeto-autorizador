@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoPostgreSQL extends Conexao {
-
+    //Classe responsavel em preecher as informações para conecção no banco
     public ConexaoPostgreSQL(BaseDados baseDados) {
         super(baseDados);
     }

@@ -17,7 +17,7 @@ import java.util.List;
 * */
 
 public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
-
+    //Método responsável em salvar (cadastrar) uma regra de autorização
     @Override
     public boolean salvar(Autorizador autorizador) {
         boolean resultado = false;
@@ -66,7 +66,7 @@ public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
     public boolean desativar(int id_autorizador) {
         return false;
     }
-
+    //Responsável em validar se a regra existe, retornando true ou false
     @Override
     public boolean validarRegra(Autorizador autorizador) {
         boolean resultado = false;
@@ -110,7 +110,7 @@ public class AutorizadorDAOPostgreSQL implements AutorizadorDAO {
         }
         return resultado;
     }
-
+    //Validação de procedimentos
     @Override
     public boolean validarProcedimento(Autorizador autorizador) {
         boolean resultado = false;

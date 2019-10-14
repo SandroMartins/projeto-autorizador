@@ -1,7 +1,12 @@
 package modelo;
 
 public class Validador {
-
+    /**
+     * Classe que faz a validção dos campos que serão
+     * digitados pelo usuário
+     *
+     * @author Sandro Ireno Martins Junior
+     */
     public Validador(){
 
     }

@@ -1,0 +1,8 @@
+modelo\Validador.class
+dao\postgresql\ConexaoPostgreSQL.class
+dao\Conexao.class
+dao\AutorizadorDAO.class
+Principal.class
+modelo\Autorizador.class
+dao\postgresql\AutorizadorDAOPostgreSQL.class
+dao\BaseDados.class
