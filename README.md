@@ -10,11 +10,11 @@
   - Instalar uma IDE (ex: Eclipse, IntelliJ);
   - Instalar o o banco postgres.
   
- * Orientação:
+* Orientação:
   - Após instalar o que é necessário, abrir o postgress e rodar os scripts contidos na pasta banco (raiz do git)
   - No script será criado a database (sistema-autorizador), criação da tabela e realizados inserção de alguns dados
   - Abrir a IDE, importar o projeto (importar como projeto MAVEN), e selecionar o projeto que foi feito o download.
   
-  * OBS:
-    - Os dados do banco estão na classe dao >> BASEDADOS.
-    - Executar classe view >> PRINCIPAL.JAVA
+ * OBS:
+    - Os dados do banco estão na classe: dao >> BASEDADOS.
+    - Executar classe: view >> PRINCIPAL.JAVA
